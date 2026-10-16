@@ -1,15 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#fff5f5">
+
   <title>Jemputan Perkahwinan Nazri & Asyiqin</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
@@ -18,11 +21,14 @@
       --cream: #fff8f5;
       --gold: #b89a62;
       --text: #5c4147;
-      --white: #fff;
+      --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
@@ -30,21 +36,39 @@
       margin: 0;
       background: var(--cream);
       color: var(--text);
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       font-size: 14px;
       line-height: 1.8;
     }
 
-    button, input, textarea {
+    button,
+    input,
+    select,
+    textarea {
       font: inherit;
     }
 
-    button, a {
+    button,
+    a {
       -webkit-tap-highlight-color: transparent;
     }
 
     a {
       color: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    h1,
+    h2,
+    h3,
+    .names {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
     }
 
     .hero {
@@ -53,20 +77,26 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 70px 22px;
+      padding: 70px 22px 120px;
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(180deg, rgba(255,248,245,.78), rgba(255,240,241,.88)),
-        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85')
-        center/cover;
+        linear-gradient(
+          180deg,
+          rgba(255, 248, 245, 0.78),
+          rgba(255, 240, 241, 0.88)
+        ),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85")
+        center / cover;
     }
 
-    .hero::before, .hero::after {
-      content: '❀';
+    .hero::before,
+    .hero::after {
+      content: "❀";
       position: absolute;
-      color: rgba(168,95,112,.23);
+      color: rgba(168, 95, 112, 0.23);
       font-size: 100px;
+      pointer-events: none;
     }
 
     .hero::before {
@@ -75,7 +105,7 @@
     }
 
     .hero::after {
-      bottom: 20px;
+      bottom: 70px;
       right: 12px;
     }
 
@@ -93,14 +123,9 @@
       font-size: 11px;
     }
 
-    h1, h2, h3, .names {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-    }
-
     h1 {
       font-size: clamp(54px, 12vw, 88px);
-      line-height: .95;
+      line-height: 0.95;
       margin: 22px 0;
       color: var(--rose);
     }
@@ -126,21 +151,23 @@
       background: var(--rose);
       text-decoration: none;
       cursor: pointer;
-      transition: .2s;
+      transition: background 0.2s;
     }
 
     .btn:hover {
       background: #874858;
     }
 
-    .btn-outline {
-      background: transparent;
+    .music-hint {
+      font-size: 11px;
+      margin-top: 14px;
       color: var(--rose);
     }
 
     section {
       padding: 75px 20px;
       text-align: center;
+      scroll-margin-top: 20px;
     }
 
     .section-inner {
@@ -180,7 +207,7 @@
     }
 
     .count-box {
-      background: #fff;
+      background: #ffffff;
       border: 1px solid #ead3d6;
       border-radius: 12px;
       padding: 17px 5px;
@@ -204,14 +231,17 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 15px;
       margin-top: 30px;
-      text-align: center;
     }
 
     .detail-card {
-      background: #fff;
+      background: #ffffff;
       border: 1px solid #eedcdd;
       border-radius: 16px;
       padding: 25px 15px;
+    }
+
+    .detail-card.full-width {
+      grid-column: 1 / -1;
     }
 
     .detail-icon {
@@ -228,7 +258,8 @@
       margin: 5px 0;
     }
 
-    .schedule {
+    .schedule,
+    .rsvp {
       background: #f9e9eb;
     }
 
@@ -259,6 +290,7 @@
     }
 
     .gallery-grid img {
+      display: block;
       width: 100%;
       height: 220px;
       object-fit: cover;
@@ -268,10 +300,6 @@
     .gallery-grid img:first-child {
       grid-column: span 2;
       height: 280px;
-    }
-
-    .rsvp {
-      background: #f9e9eb;
     }
 
     .rsvp-form {
@@ -294,7 +322,7 @@
       border: 1px solid #e4c8ce;
       border-radius: 10px;
       padding: 12px;
-      background: #fff;
+      background: #ffffff;
       color: var(--text);
       margin-top: 5px;
     }
@@ -304,15 +332,15 @@
     }
 
     footer {
-      padding: 35px 20px 90px;
+      padding: 35px 20px 150px;
       text-align: center;
-      background: #fff;
+      background: #ffffff;
     }
 
     .music-button {
       position: fixed;
       right: 16px;
-      bottom: 18px;
+      bottom: calc(78px + env(safe-area-inset-bottom, 0px));
       z-index: 1000;
       border: 1px solid var(--gold);
       border-radius: 30px;
@@ -326,7 +354,7 @@
 
     .music-button.playing {
       background: var(--rose);
-      color: #fff;
+      color: #ffffff;
       border-color: var(--rose);
     }
 
@@ -339,7 +367,8 @@
       display: flex;
       justify-content: space-around;
       padding: 9px 4px;
-      background: rgba(255,255,255,.96);
+      padding-bottom: calc(9px + env(safe-area-inset-bottom, 0px));
+      background: rgba(255, 255, 255, 0.96);
       border-top: 1px solid #ecd9dc;
     }
 
@@ -353,17 +382,6 @@
     .bottom-nav span {
       display: block;
       font-size: 17px;
-    }
-
-    #youtube-player {
-      position: fixed;
-      width: 2px;
-      height: 2px;
-      right: 0;
-      bottom: 0;
-      opacity: .01;
-      pointer-events: none;
-      overflow: hidden;
     }
 
     @media (max-width: 480px) {
@@ -391,16 +409,33 @@
         height: 220px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!--
+    Upload your permitted MP3 file beside index.html.
+    The filename must match exactly: music.mp3
 
-  <!-- MUSIC: cuba autoplay apabila halaman dibuka -->
-  <div id="youtube-player" aria-hidden="true"></div>
+    A YouTube page URL cannot be used as this audio source.
+  -->
+  <audio id="background-music" autoplay loop preload="auto">
+    <source src="./music.mp3" type="audio/mpeg">
+  </audio>
 
-  <button id="music-button" class="music-button" type="button"
-          aria-label="Mainkan muzik" onclick="startMusic(true)">
+  <button
+    id="music-button"
+    class="music-button"
+    type="button"
+    aria-label="Mainkan muzik"
+    aria-pressed="false"
+  >
     ♫ Mainkan Muzik
   </button>
 
@@ -408,14 +443,27 @@
   <header class="hero" id="home">
     <div class="hero-inner">
       <div class="eyebrow">Jemputan Walimatulurus</div>
+
       <h1>
         Nazri
         <span class="ampersand">&</span>
         Asyiqin
       </h1>
-      <p>Dengan penuh kesyukuran, kami menjemput anda untuk meraikan hari bahagia kami.</p>
+
+      <p>
+        Dengan penuh kesyukuran, kami menjemput anda untuk
+        meraikan hari bahagia kami.
+      </p>
+
       <div class="hero-date">RABU · 9 JUN 2027</div>
-      <a class="btn" href="#jemputan">Lihat Jemputan</a>
+
+      <a class="btn" id="open-invitation" href="#jemputan">
+        Lihat Jemputan
+      </a>
+
+      <p class="music-hint" id="music-status" role="status" aria-live="polite">
+        Tekan Lihat Jemputan untuk membuka jemputan dengan muzik.
+      </p>
     </div>
   </header>
 
@@ -423,14 +471,21 @@
   <section class="intro" id="jemputan">
     <div class="section-inner">
       <div class="eyebrow">Bismillahirrahmanirrahim</div>
+
       <h2 class="section-title">Dengan Izin-Nya</h2>
+
       <div class="divider">❀ ✦ ❀</div>
+
       <p>
-        Dengan segala hormatnya, kami menjemput keluarga dan sahabat
-        untuk hadir memeriahkan majlis perkahwinan kami.
+        Dengan segala hormatnya, kami menjemput keluarga dan
+        sahabat untuk hadir memeriahkan majlis perkahwinan kami.
       </p>
+
       <div class="names">Nazri & Asyiqin</div>
-      <p>Semoga kehadiran anda menyerikan lagi hari istimewa ini.</p>
+
+      <p>
+        Semoga kehadiran anda menyerikan lagi hari istimewa ini.
+      </p>
     </div>
   </section>
 
@@ -438,20 +493,25 @@
   <section id="countdown-section">
     <div class="section-inner">
       <div class="eyebrow">Detik yang dinanti</div>
+
       <h2 class="section-title">Menuju Hari Bahagia</h2>
+
       <div class="countdown">
         <div class="count-box">
           <div class="count-number" id="days">--</div>
           <div class="count-label">Hari</div>
         </div>
+
         <div class="count-box">
           <div class="count-number" id="hours">--</div>
           <div class="count-label">Jam</div>
         </div>
+
         <div class="count-box">
           <div class="count-number" id="minutes">--</div>
           <div class="count-label">Minit</div>
         </div>
+
         <div class="count-box">
           <div class="count-number" id="seconds">--</div>
           <div class="count-label">Saat</div>
@@ -464,6 +524,7 @@
   <section class="intro" id="majlis">
     <div class="section-inner">
       <div class="eyebrow">Butiran Majlis</div>
+
       <h2 class="section-title">Jemputan Perkahwinan</h2>
 
       <div class="details-grid">
@@ -479,14 +540,20 @@
           <p>12:00 tengah hari – 4:00 petang</p>
         </div>
 
-        <div class="detail-card" style="grid-column: 1 / -1;">
+        <div class="detail-card full-width">
           <div class="detail-icon">⌖</div>
           <h3>Lokasi</h3>
+
           <p><strong>d'Tempat Country Club</strong></p>
           <p>Tempat berlangsungnya hari bahagia kami.</p>
+
           <p style="margin-top: 18px;">
-            <a class="btn" target="_blank" rel="noopener"
-               href="https://maps.app.goo.gl/kQMDe6UrtmC1ieG27">
+            <a
+              class="btn"
+              target="_blank"
+              rel="noopener"
+              href="https://maps.app.goo.gl/kQMDe6UrtmC1ieG27"
+            >
               Buka Google Maps
             </a>
           </p>
@@ -499,22 +566,31 @@
   <section class="schedule" id="aturcara">
     <div class="section-inner">
       <div class="eyebrow">Perjalanan Majlis</div>
+
       <h2 class="section-title">Atur Cara Majlis</h2>
-      <p><small>Cadangan atur cara — masa boleh dikemas kini kemudian.</small></p>
+
+      <p>
+        <small>
+          Cadangan atur cara — masa boleh dikemas kini kemudian.
+        </small>
+      </p>
 
       <div class="schedule-list">
         <div class="schedule-item">
           <div class="schedule-time">12:00 PM</div>
           <div>Ketibaan tetamu dan jamuan</div>
         </div>
+
         <div class="schedule-item">
           <div class="schedule-time">1:00 PM</div>
           <div>Ketibaan pengantin</div>
         </div>
+
         <div class="schedule-item">
           <div class="schedule-time">2:00 PM</div>
           <div>Sesi bergambar bersama keluarga dan tetamu</div>
         </div>
+
         <div class="schedule-item">
           <div class="schedule-time">4:00 PM</div>
           <div>Majlis dijangka selesai</div>
@@ -527,24 +603,36 @@
   <section id="galeri">
     <div class="section-inner">
       <div class="eyebrow">Kenangan Indah</div>
+
       <h2 class="section-title">Galeri</h2>
+
       <p>Ruang kenangan untuk meraikan kisah cinta kami.</p>
 
       <div class="gallery-grid">
         <img
           src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85"
           alt="Inspirasi majlis perkahwinan"
-          loading="lazy">
+          loading="lazy"
+        >
+
         <img
           src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85"
           alt="Hiasan perkahwinan"
-          loading="lazy">
+          loading="lazy"
+        >
+
         <img
           src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=800&q=85"
           alt="Suasana majlis perkahwinan"
-          loading="lazy">
+          loading="lazy"
+        >
       </div>
-      <p><small>Gambar contoh boleh digantikan dengan gambar pasangan sendiri.</small></p>
+
+      <p>
+        <small>
+          Gambar contoh boleh digantikan dengan gambar pasangan sendiri.
+        </small>
+      </p>
     </div>
   </section>
 
@@ -552,13 +640,24 @@
   <section class="rsvp" id="rsvp">
     <div class="section-inner">
       <div class="eyebrow">Maklum Balas Kehadiran</div>
+
       <h2 class="section-title">RSVP</h2>
-      <p>Sila isi maklumat di bawah untuk memaklumkan kehadiran anda melalui WhatsApp.</p>
+
+      <p>
+        Sila isi maklumat di bawah untuk memaklumkan kehadiran
+        anda melalui WhatsApp.
+      </p>
 
       <form class="rsvp-form" id="rsvp-form">
         <label>
           Nama
-          <input id="guest-name" type="text" placeholder="Nama anda" required>
+          <input
+            id="guest-name"
+            type="text"
+            placeholder="Nama anda"
+            autocomplete="name"
+            required
+          >
         </label>
 
         <label>
@@ -568,25 +667,36 @@
             <option value="2 orang">2 orang</option>
             <option value="3 orang">3 orang</option>
             <option value="4 orang">4 orang</option>
-            <option value="5 orang atau lebih">5 orang atau lebih</option>
+            <option value="5 orang atau lebih">
+              5 orang atau lebih
+            </option>
           </select>
         </label>
 
         <label>
           Kehadiran
           <select id="guest-attendance" required>
-            <option value="Hadir">Insya-Allah, saya hadir</option>
-            <option value="Tidak dapat hadir">Maaf, tidak dapat hadir</option>
+            <option value="Hadir">
+              Insya-Allah, saya hadir
+            </option>
+            <option value="Tidak dapat hadir">
+              Maaf, tidak dapat hadir
+            </option>
           </select>
         </label>
 
         <label>
           Ucapan (pilihan)
-          <textarea id="guest-message" rows="3"
-                    placeholder="Titipkan ucapan anda"></textarea>
+          <textarea
+            id="guest-message"
+            rows="3"
+            placeholder="Titipkan ucapan anda"
+          ></textarea>
         </label>
 
-        <button class="btn" type="submit">Hantar RSVP melalui WhatsApp</button>
+        <button class="btn" type="submit">
+          Hantar RSVP melalui WhatsApp
+        </button>
       </form>
     </div>
   </section>
@@ -609,172 +719,186 @@
   </nav>
 
   <script>
+    // ==================================================
     // COUNTDOWN
-    const weddingDate = new Date('2027-06-09T12:00:00+08:00').getTime();
+    // ==================================================
+
+    const weddingDate = new Date(
+      "2027-06-09T12:00:00+08:00"
+    ).getTime();
 
     function updateCountdown() {
-      const now = Date.now();
-      const distance = weddingDate - now;
+      const remaining = Math.max(0, weddingDate - Date.now());
 
-      if (distance <= 0) {
-        document.getElementById('days').textContent = '0';
-        document.getElementById('hours').textContent = '0';
-        document.getElementById('minutes').textContent = '0';
-        document.getElementById('seconds').textContent = '0';
-        return;
-      }
+      document.getElementById("days").textContent =
+        Math.floor(remaining / 86400000);
 
-      document.getElementById('days').textContent =
-        Math.floor(distance / 86400000);
-      document.getElementById('hours').textContent =
-        Math.floor((distance % 86400000) / 3600000);
-      document.getElementById('minutes').textContent =
-        Math.floor((distance % 3600000) / 60000);
-      document.getElementById('seconds').textContent =
-        Math.floor((distance % 60000) / 1000);
+      document.getElementById("hours").textContent =
+        Math.floor((remaining % 86400000) / 3600000);
+
+      document.getElementById("minutes").textContent =
+        Math.floor((remaining % 3600000) / 60000);
+
+      document.getElementById("seconds").textContent =
+        Math.floor((remaining % 60000) / 1000);
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // YOUTUBE MUSIC
-    // Cuba autoplay sebaik player sedia. Browser mungkin menyekat bunyi
-    // sehingga pengguna berinteraksi dengan halaman.
-    let musicPlayer = null;
-    let musicReady = false;
-    let musicStarted = false;
+    // ==================================================
+    // MP3 BACKGROUND MUSIC
+    // ==================================================
 
-    const musicButton = document.getElementById('music-button');
+    const music = document.getElementById("background-music");
+    const musicButton = document.getElementById("music-button");
+    const musicStatus = document.getElementById("music-status");
+    const invitationButton = document.getElementById("open-invitation");
 
-    function setMusicButton(playing) {
-      musicButton.classList.toggle('playing', playing);
+    let playPending = false;
+    let manuallyPaused = false;
+
+    music.volume = 0.7;
+
+    function updateMusicButton(playing) {
+      musicButton.classList.toggle("playing", playing);
+
       musicButton.textContent = playing
-        ? '♫ Muzik dimainkan'
-        : '♫ Mainkan Muzik';
+        ? "♫ Jeda Muzik"
+        : "♫ Mainkan Muzik";
+
       musicButton.setAttribute(
-        'aria-label',
-        playing ? 'Hentikan muzik' : 'Mainkan muzik'
+        "aria-label",
+        playing ? "Jeda muzik" : "Mainkan muzik"
+      );
+
+      musicButton.setAttribute(
+        "aria-pressed",
+        String(playing)
       );
     }
 
-    function startMusic(fromUser = false) {
-      if (!musicReady || !musicPlayer) {
-        if (fromUser) {
-          musicButton.textContent = '♫ Cuba lagi sebentar';
-        }
+    function showMusicError() {
+      updateMusicButton(false);
+
+      musicStatus.textContent =
+        "Muzik tidak dapat dimuatkan. Sila semak fail music.mp3.";
+    }
+
+    async function playMusic() {
+      if (playPending || !music.paused) {
         return;
       }
 
+      playPending = true;
+
       try {
-        if (musicStarted && fromUser) {
-          musicPlayer.pauseVideo();
-          musicStarted = false;
-          setMusicButton(false);
+        await music.play();
+        // The 'playing' event confirms actual playback.
+      } catch (error) {
+        updateMusicButton(false);
+
+        if (error.name === "NotAllowedError") {
+          musicStatus.textContent =
+            "Tekan Lihat Jemputan atau Mainkan Muzik untuk memulakan lagu.";
+        } else if (error.name !== "AbortError") {
+          showMusicError();
+        }
+      } finally {
+        playPending = false;
+      }
+    }
+
+    music.addEventListener("playing", function () {
+      updateMusicButton(true);
+      musicStatus.textContent = "♫ Muzik sedang dimainkan.";
+    });
+
+    music.addEventListener("pause", function () {
+      updateMusicButton(false);
+      musicStatus.textContent =
+        "Muzik dijeda. Tekan Mainkan Muzik untuk sambung.";
+    });
+
+    music.addEventListener("error", showMusicError);
+
+    // Source loading failures may occur on the <source> element.
+    music.querySelector("source").addEventListener(
+      "error",
+      showMusicError
+    );
+
+    music.addEventListener("waiting", function () {
+      musicStatus.textContent = "Muzik sedang dimuatkan…";
+    });
+
+    musicButton.addEventListener("click", function () {
+      if (music.paused) {
+        manuallyPaused = false;
+        playMusic();
+      } else {
+        manuallyPaused = true;
+        music.pause();
+      }
+    });
+
+    // Start music within the guest's invitation-button tap.
+    invitationButton.addEventListener("click", function () {
+      if (!manuallyPaused) {
+        playMusic();
+      }
+    });
+
+    // Attempt audible autoplay immediately.
+    // Browsers may reject this until the guest taps a button.
+    playMusic();
+
+    // ==================================================
+    // RSVP WHATSAPP
+    // ==================================================
+
+    document.getElementById("rsvp-form").addEventListener(
+      "submit",
+      function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("guest-name")
+          .value.trim();
+
+        const count = document.getElementById("guest-count")
+          .value;
+
+        const attendance = document.getElementById(
+          "guest-attendance"
+        ).value;
+
+        const message = document.getElementById("guest-message")
+          .value.trim();
+
+        if (!name) {
+          document.getElementById("guest-name").focus();
           return;
         }
 
-        musicPlayer.unMute();
-        musicPlayer.setVolume(70);
-        musicPlayer.playVideo();
-        musicStarted = true;
-        setMusicButton(true);
-      } catch (error) {
-        setMusicButton(false);
-      }
-    }
+        const lines = [
+          "Assalamualaikum, RSVP Jemputan Perkahwinan Nazri & Asyiqin.",
+          "",
+          "Nama: " + name,
+          "Jumlah tetamu: " + count,
+          "Kehadiran: " + attendance
+        ];
 
-    // Muat YouTube IFrame API
-    (function loadYouTubeAPI() {
-      const script = document.createElement('script');
-      script.src = 'https://www.youtube.com/iframe_api';
-      script.async = true;
-      document.head.appendChild(script);
-    })();
-
-    // Fungsi ini dipanggil oleh YouTube API
-    function onYouTubeIframeAPIReady() {
-      musicPlayer = new YT.Player('youtube-player', {
-        width: '2',
-        height: '2',
-        videoId: 'FcOctsNXyjk',
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          playsinline: 1,
-          rel: 0,
-          loop: 1,
-          playlist: 'FcOctsNXyjk'
-        },
-        events: {
-          onReady: function(event) {
-            musicReady = true;
-            event.target.setVolume(70);
-
-            // Percubaan autoplay dengan bunyi
-            event.target.unMute();
-            event.target.playVideo();
-          },
-
-          onStateChange: function(event) {
-            if (event.data === YT.PlayerState.PLAYING) {
-              musicStarted = true;
-              setMusicButton(true);
-            } else if (
-              event.data === YT.PlayerState.PAUSED ||
-              event.data === YT.PlayerState.ENDED
-            ) {
-              musicStarted = false;
-              setMusicButton(false);
-            }
-          },
-
-          onError: function() {
-            musicStarted = false;
-            setMusicButton(false);
-          }
+        if (message) {
+          lines.push("Ucapan: " + message);
         }
-      });
-    }
 
-    // Cubaan semula apabila pengguna mula berinteraksi dengan halaman.
-    // Ini membantu pada browser yang memerlukan interaksi pengguna.
-    function retryMusicAfterInteraction() {
-      if (musicReady && !musicStarted) {
-        startMusic(false);
+        const whatsappUrl =
+          "https://wa.me/60182965781?text=" +
+          encodeURIComponent(lines.join("\n"));
+
+        window.open(whatsappUrl, "_blank", "noopener");
       }
-      window.removeEventListener('pointerdown', retryMusicAfterInteraction);
-      window.removeEventListener('keydown', retryMusicAfterInteraction);
-    }
-
-    window.addEventListener('pointerdown', retryMusicAfterInteraction, {
-      once: true
-    });
-    window.addEventListener('keydown', retryMusicAfterInteraction, {
-      once: true
-    });
-
-    // RSVP WHATSAPP
-    document.getElementById('rsvp-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const name = document.getElementById('guest-name').value.trim();
-      const count = document.getElementById('guest-count').value;
-      const attendance = document.getElementById('guest-attendance').value;
-      const message = document.getElementById('guest-message').value.trim();
-
-      const text =
-        'Assalamualaikum, RSVP Jemputan Perkahwinan Nazri & Asyiqin.%0A%0A' +
-        'Nama: ' + encodeURIComponent(name) + '%0A' +
-        'Jumlah tetamu: ' + encodeURIComponent(count) + '%0A' +
-        'Kehadiran: ' + encodeURIComponent(attendance) +
-        (message ? '%0AUcapan: ' + encodeURIComponent(message) : '');
-
-      const whatsappUrl =
-        'https://wa.me/60182965781?text=' + text;
-
-      window.open(whatsappUrl, '_blank', 'noopener');
-    });
+    );
   </script>
-
 </body>
 </html>
