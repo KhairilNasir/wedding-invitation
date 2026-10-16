@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Wedding Invitation</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      text-align: center;
+      color: #51483e;
+      background: #f8f3eb;
+    }
+
+    section { padding: 42px 20px; }
+
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(#f8f3ebdd, #f8f3ebee),
+        url("couple.jpg") center/cover;
+    }
+
+    h1 {
+      font-size: clamp(36px, 8vw, 60px);
+      margin: 12px 0;
+    }
+
+    h2 { font-weight: normal; }
+
+    button {
+      background: #7c6650;
+      color: white;
+      border: 0;
+      border-radius: 30px;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .photo {
+      width: min(90%, 420px);
+      border-radius: 180px 180px 12px 12px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .time {
+      background: white;
+      border-radius: 12px;
+      padding: 15px 12px;
+      min-width: 72px;
+    }
+
+    .number {
+      display: block;
+      font-size: 26px;
+    }
+
+    .hidden { display: none; }
+
+    a { color: #7c6650; }
+  </style>
+</head>
+
+<body>
+
+  <section class="cover" id="cover">
+    <p>THE WEDDING OF</p>
+    <h1>Your Name<br>&<br>Partner's Name</h1>
+    <p>Our special day • 20 December 2026</p>
+    <button id="openBtn">Open Invitation ♥</button>
+  </section>
+
+  <main id="invitation" class="hidden">
+
+    <section>
+      <p>WITH LOVE AND GRATITUDE</p>
+      <h1>We're Getting Married!</h1>
+      <img class="photo" src="couple.jpg"
+           alt="Wedding couple">
+      <p>We joyfully invite you to celebrate our special day.</p>
+    </section>
+
+    <section>
+      <h2>Counting Down To Our Big Day</h2>
+      <div class="countdown">
+        <div class="time">
+          <span class="number" id="days">0</span>Days
+        </div>
+        <div class="time">
+          <span class="number" id="hours">0</span>Hours
+        </div>
+        <div class="time">
+          <span class="number" id="minutes">0</span>Minutes
+        </div>
+        <div class="time">
+          <span class="number" id="seconds">0</span>Seconds
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Wedding Details</h2>
+      <p>Sunday, 20 December 2026</p>
+      <p>Akad Nikah: 10:00 AM</p>
+      <p>Reception: 12:00 PM – 4:00 PM</p>
+      <p>Venue: Your Wedding Venue, Malaysia</p>
+      <p>
+        <a href="https://maps.google.com/" target="_blank"
+           rel="noopener">Open Google Maps</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>With Love,</h2>
+      <p>Your Name & Partner's Name</p>
+      <p>Thank you for being part of our journey ♥</p>
+    </section>
+
+  </main>
+
+  <audio id="music" src="song.mp3" loop></audio>
+
+  <script>
+    // Change this to your actual wedding date and time.
+    const weddingDate = new Date("2026-12-20T10:00:00+08:00");
+
+    function updateCountdown() {
+      const remaining = weddingDate.getTime() - Date.now();
+      const days = Math.max(0, Math.floor(remaining / 86400000));
+      const hours = Math.max(0, Math.floor(remaining / 3600000) % 24);
+      const minutes = Math.max(0, Math.floor(remaining / 60000) % 60);
+      const seconds = Math.max(0, Math.floor(remaining / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    document.getElementById("openBtn").addEventListener("click", async () => {
+      document.getElementById("cover").classList.add("hidden");
+      document.getElementById("invitation").classList.remove("hidden");
+
+      const music = document.getElementById("music");
+      try {
+        await music.play();
+      } catch (error) {
+        alert("Please tap the music control to play the song.");
+      }
+
+      window.scrollTo(0, 0);
+    });
+  </script>
+
+</body>
+</html>
